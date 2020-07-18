@@ -1,0 +1,17 @@
+{%extends 'portfolio\base1.html'%}
+{%block content%}
+<h1>this is ravi portfolio</h1>
+{% load static %}
+<a href="{% url 'blog:all_blogs'%}">Blog</a>
+<a href="{% static "portfolio\resume.docx"%}">Nick2 Resume</a>
+<a href="{% static "portfolio\resume.pdf"%}">Nick Resume</a>
+<img src="{% static '\portfolio\SquareBlonde.jpg'%}">
+{%for project in projects %} <!extract data>
+  <h2>  {{project.description}}<h2> <!extract exact data using for loop of Python>
+  <p>  {{project.title}}</p>
+  <img src="{{project.image.url}}">
+  {%if project.url%}
+  <br>  <a href="{{project.url}}"> LINk</a>
+    {% endif %}
+{%endfor%}
+{%endblock%}
